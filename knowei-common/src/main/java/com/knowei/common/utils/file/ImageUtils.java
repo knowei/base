@@ -1,18 +1,18 @@
 package com.knowei.common.utils.file;
 
+import com.knowei.common.config.KnoweiConfig;
+import com.knowei.common.constant.Constants;
+import com.knowei.common.utils.StringUtils;
+import org.apache.poi.util.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Arrays;
-
-import org.apache.poi.util.IOUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import com.knowei.common.config.RuoYiConfig;
-import com.knowei.common.constant.Constants;
-import com.knowei.common.utils.StringUtils;
 
 /**
  * 图片处理工具类
@@ -62,7 +62,7 @@ public class ImageUtils {
                 in = urlConnection.getInputStream();
             } else {
                 // 本机地址
-                String localPath = RuoYiConfig.getProfile();
+                String localPath = KnoweiConfig.getProfile();
                 String downloadPath = localPath + StringUtils.substringAfter(url, Constants.RESOURCE_PREFIX);
                 in = new FileInputStream(downloadPath);
             }

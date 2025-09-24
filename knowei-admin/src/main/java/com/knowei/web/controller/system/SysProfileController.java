@@ -1,18 +1,7 @@
 package com.knowei.web.controller.system;
 
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 import com.knowei.common.annotation.Log;
-import com.knowei.common.config.RuoYiConfig;
+import com.knowei.common.config.KnoweiConfig;
 import com.knowei.common.core.controller.BaseController;
 import com.knowei.common.core.domain.AjaxResult;
 import com.knowei.common.core.domain.entity.SysUser;
@@ -26,6 +15,11 @@ import com.knowei.common.utils.file.FileUtils;
 import com.knowei.common.utils.file.MimeTypeUtils;
 import com.knowei.framework.web.service.TokenService;
 import com.knowei.system.service.ISysUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Map;
 
 /**
  * 个人信息 业务处理
@@ -115,11 +109,11 @@ public class SysProfileController extends BaseController {
         if (!file.isEmpty()) {
             LoginUser loginUser = getLoginUser();
             String avatar =
-                FileUploadUtils.upload(RuoYiConfig.getAvatarPath(), file, MimeTypeUtils.IMAGE_EXTENSION, true);
+                FileUploadUtils.upload(KnoweiConfig.getAvatarPath(), file, MimeTypeUtils.IMAGE_EXTENSION, true);
             if (userService.updateUserAvatar(loginUser.getUserId(), avatar)) {
                 String oldAvatar = loginUser.getUser().getAvatar();
                 if (StringUtils.isNotEmpty(oldAvatar)) {
-                    FileUtils.deleteFile(RuoYiConfig.getProfile() + FileUtils.stripPrefix(oldAvatar));
+                    FileUtils.deleteFile(KnoweiConfig.getProfile() + FileUtils.stripPrefix(oldAvatar));
                 }
                 AjaxResult ajax = AjaxResult.success();
                 ajax.put("imgUrl", avatar);

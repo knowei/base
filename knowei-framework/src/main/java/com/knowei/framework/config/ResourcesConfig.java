@@ -1,7 +1,8 @@
 package com.knowei.framework.config;
 
-import java.util.concurrent.TimeUnit;
-
+import com.knowei.common.config.KnoweiConfig;
+import com.knowei.common.constant.Constants;
+import com.knowei.framework.interceptor.RepeatSubmitInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +13,8 @@ import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import com.knowei.common.config.RuoYiConfig;
-import com.knowei.common.constant.Constants;
-import com.knowei.framework.interceptor.RepeatSubmitInterceptor;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * 通用配置
@@ -28,7 +28,7 @@ public class ResourcesConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         /** 本地文件上传路径 */
         registry.addResourceHandler(Constants.RESOURCE_PREFIX + "/**")
-            .addResourceLocations("file:" + RuoYiConfig.getProfile() + "/");
+            .addResourceLocations("file:" + KnoweiConfig.getProfile() + "/");
 
         /** swagger配置 */
         registry.addResourceHandler("/swagger-ui/**")

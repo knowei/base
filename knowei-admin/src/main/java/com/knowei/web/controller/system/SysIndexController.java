@@ -1,10 +1,10 @@
 package com.knowei.web.controller.system;
 
+import com.knowei.common.config.KnoweiConfig;
+import com.knowei.common.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.knowei.common.config.RuoYiConfig;
-import com.knowei.common.utils.StringUtils;
 
 /**
  * 首页
@@ -13,7 +13,7 @@ import com.knowei.common.utils.StringUtils;
 public class SysIndexController {
     /** 系统基础配置 */
     @Autowired
-    private RuoYiConfig ruoyiConfig;
+    private KnoweiConfig ruoyiConfig;
 
     /**
      * 访问首页，提示语

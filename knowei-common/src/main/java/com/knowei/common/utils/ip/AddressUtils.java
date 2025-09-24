@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
-import com.knowei.common.config.RuoYiConfig;
+import com.knowei.common.config.KnoweiConfig;
 import com.knowei.common.constant.Constants;
 import com.knowei.common.utils.StringUtils;
 import com.knowei.common.utils.http.HttpUtils;
@@ -26,7 +26,7 @@ public class AddressUtils {
         if (IpUtils.internalIp(ip)) {
             return "内网IP";
         }
-        if (RuoYiConfig.isAddressEnabled()) {
+        if (KnoweiConfig.isAddressEnabled()) {
             try {
                 String rspStr = HttpUtils.sendGet(IP_URL, "ip=" + ip + "&json=true", Constants.GBK);
                 if (StringUtils.isEmpty(rspStr)) {

@@ -33,6 +33,8 @@
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <jakarta.version>6.0.0</jakarta.version>
         <springdoc.version>2.8.9</springdoc.version>
+        <mybatis-plus.version>3.5.14</mybatis-plus.version>
+        <javax.annotation.api.version>1.3.2</javax.annotation.api.version>
     </properties>
 
     <!-- 依赖声明 -->
@@ -67,6 +69,18 @@
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${pagehelper.boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.annotation</groupId>
+                <artifactId>javax.annotation-api</artifactId>
+                <version>${javax.annotation.api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
             </dependency>
 
             <dependency>
@@ -194,6 +208,7 @@
         <module>knowei-quartz</module>
         <module>knowei-generator</module>
         <module>knowei-common</module>
+        <module>knowei-noval</module>
     </modules>
     <packaging>pom</packaging>
 

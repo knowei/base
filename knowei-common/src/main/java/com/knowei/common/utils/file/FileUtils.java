@@ -1,25 +1,19 @@
 package com.knowei.common.utils.file;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-
+import com.knowei.common.config.KnoweiConfig;
+import com.knowei.common.constant.Constants;
+import com.knowei.common.utils.DateUtils;
+import com.knowei.common.utils.StringUtils;
+import com.knowei.common.utils.uuid.IdUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
-import com.knowei.common.config.RuoYiConfig;
-import com.knowei.common.constant.Constants;
-import com.knowei.common.utils.DateUtils;
-import com.knowei.common.utils.StringUtils;
-import com.knowei.common.utils.uuid.IdUtils;
+
+import java.io.*;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 文件处理工具类
@@ -63,7 +57,7 @@ public class FileUtils {
      * @throws IOException IO异常
      */
     public static String writeImportBytes(byte[] data) throws IOException {
-        return writeBytes(data, RuoYiConfig.getImportPath());
+        return writeBytes(data, KnoweiConfig.getImportPath());
     }
 
     /**
